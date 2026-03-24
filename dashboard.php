@@ -13,19 +13,25 @@ if (esAdmin()) {
 <head>
     <meta charset="UTF-8">
     <title>Mi Cuenta - Tienda Ropa</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></h1>
-    
-    <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['usuario_email']); ?></p>
-    <p><strong>Rol:</strong> Usuario normal</p>
-    
-    <ul>
-        <li><a href="#">Ver catálogo de productos</a></li>
-        <li><a href="#">Mi perfil</a></li>
-        <li><a href="#">Mis pedidos</a></li>
-    </ul>
-    
-    <a href="/logout.php">Cerrar Sesión</a>
+    <div class="container">
+        <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></h1>
+        
+        <div class="info-usuario">
+            <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['usuario_email']); ?></p>
+            <p><strong>Rol:</strong> Usuario normal</p>
+        </div>
+        
+        <ul>
+            <li><a href="#">Ver catálogo de productos</a></li>
+            <li><a href="#">Mi perfil</a></li>
+            <li><a href="#">Mis pedidos</a></li>
+        </ul>
+        
+        <a href="/logout.php" class="logout">Cerrar Sesión</a>
+    </div>
 </body>
 </html>
+

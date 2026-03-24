@@ -16,49 +16,64 @@ $totalUsers = $conn->query("SELECT COUNT(*) as total FROM usuarios WHERE rol = '
 <head>
     <meta charset="UTF-8">
     <title>Panel Admin - Tienda Ropa</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Panel de Administración</h1>
-    <p>Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></strong></p>
-    
-    <h3>Estadísticas</h3>
-    <p>Total Usuarios: <?php echo $totalUsuarios; ?></p>
-    <p>Administradores: <?php echo $totalAdmins; ?></p>
-    <p>Usuarios Normales: <?php echo $totalUsers; ?></p>
-    
-    <h2>Gestión de Usuarios</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Fecha Registro</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($usuarios as $usuario): ?>
-            <tr>
-                <td><?php echo $usuario['id']; ?></td>
-                <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
-                <td><?php echo htmlspecialchars($usuario['email']); ?></td>
-                <td><?php echo $usuario['rol']; ?></td>
-                <td><?php echo $usuario['created_at']; ?></td>
-                <td>
-                    <?php if ($usuario['rol'] !== 'admin'): ?>
-                        <a href="eliminar_usuario.php?id=<?php echo $usuario['id']; ?>" onclick="return confirm('¿Eliminar usuario?')">Eliminar</a>
-                    <?php else: ?>
-                        -
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    
-    <a href="/logout.php">Cerrar Sesión</a>
-    <a href="/dashboard.php">Volver al inicio</a>
+    <div class="admin-container">
+        <h1>Panel de Administración</h1>
+        <p>Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></strong></p>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Usuarios</h3>
+                <p><?php echo $totalUsuarios; ?></p>
+            </div>
+            <div class="stat-card">
+                <h3>Administradores</h3>
+                <p><?php echo $totalAdmins; ?></p>
+            </div>
+            <div class="stat-card">
+                <h3>Usuarios Normales</h3>
+                <p><?php echo $totalUsers; ?></p>
+            </div>
+        </div>
+        
+        <h2>Gestión de Usuarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Fecha Registro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($usuarios as $usuario): ?>
+                <tr>
+                    <td><?php echo $usuario['id']; ?></td>
+                    <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                    <td><?php echo $usuario['rol']; ?></td>
+                    <td><?php echo $usuario['created_at']; ?></td>
+                    <td>
+                        <?php if ($usuario['rol'] !== 'admin'): ?>
+                            <a href="eliminar_usuario.php?id=<?php echo $usuario['id']; ?>" onclick="return confirm('¿Eliminar usuario?')">Eliminar</a>
+                        <?php else: ?>
+                            -
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        
+        <a href="/logout.php" class="logout">Cerrar Sesión</a>
+        <a href="/dashboard.php" class="back">Volver al inicio</a>
+    </div>
 </body>
 </html>
+
+

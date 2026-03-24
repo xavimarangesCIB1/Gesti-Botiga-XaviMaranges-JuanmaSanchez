@@ -48,24 +48,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Login - Tienda Ropa</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
-    
-    <?php if ($error): ?>
-        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    
-    <form method="POST" action="">
-        <div>
-            <label>Email:</label>
-            <input type="email" name="email" required>
-        </div>
-        <div>
-            <label>Contraseña:</label>
-            <input type="password" name="password" required>
-        </div>
-        <button type="submit">Ingresar</button>
-    </form>
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        
+        <?php if ($error): ?>
+            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+        
+        <form method="POST" action="">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
 </body>
 </html>
+
+
