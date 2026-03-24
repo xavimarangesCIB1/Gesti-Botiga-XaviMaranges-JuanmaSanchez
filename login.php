@@ -5,9 +5,9 @@ require_once 'includes/auth.php';
 
 if (estaLogueado()) {
     if (esAdmin()) {
-        header('Location: /admin/panel.php');
+        header('Location: /tienda-ropa/admin/panel.php');
     } else {
-        header('Location: /dashboard.php');
+        header('Location: /tienda-ropa/dashboard.php');
     }
     exit();
 }
@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_rol'] = $usuario['rol'];
         
         if ($usuario['rol'] === 'admin') {
-            header('Location: /admin/panel.php');
+            header('Location: /tienda-ropa/admin/panel.php');
         } else {
-            header('Location: /dashboard.php');
+            header('Location: /tienda-ropa/dashboard.php');
         }
         exit();
     } else {
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Login - Tienda Ropa</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/tienda-ropa/css/style.css">
 </head>
 <body>
     <div class="login-container">
@@ -66,5 +66,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 </html>
-
-

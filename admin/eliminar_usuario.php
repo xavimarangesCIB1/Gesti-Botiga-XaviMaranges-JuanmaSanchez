@@ -7,7 +7,6 @@ $id = $_GET['id'] ?? 0;
 
 $conn->query("DELETE FROM usuarios WHERE id = $id AND rol != 'admin'");
 
-header('Location: panel.php');
+header('Location: /tienda-ropa/admin/panel.php');
 exit();
 ?>
-

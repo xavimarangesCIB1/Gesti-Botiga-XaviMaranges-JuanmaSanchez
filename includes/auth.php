@@ -11,7 +11,7 @@ function esAdmin() {
 
 function redirigirSiNoLogueado() {
     if (!estaLogueado()) {
-        header('Location: /login.php');
+        header('Location: /tienda-ropa/login.php');
         exit();
     }
 }

@@ -3,7 +3,7 @@ require_once 'includes/auth.php';
 redirigirSiNoLogueado();
 
 if (esAdmin()) {
-    header('Location: /admin/panel.php');
+    header('Location: /tienda-ropa/admin/panel.php');
     exit();
 }
 ?>
@@ -13,7 +13,7 @@ if (esAdmin()) {
 <head>
     <meta charset="UTF-8">
     <title>Mi Cuenta - Tienda Ropa</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/tienda-ropa/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -30,8 +30,7 @@ if (esAdmin()) {
             <li><a href="#">Mis pedidos</a></li>
         </ul>
         
-        <a href="/logout.php" class="logout">Cerrar Sesión</a>
+        <a href="/tienda-ropa/logout.php" class="logout">Cerrar Sesión</a>
     </div>
 </body>
 </html>
-

@@ -16,7 +16,7 @@ $totalUsers = $conn->query("SELECT COUNT(*) as total FROM usuarios WHERE rol = '
 <head>
     <meta charset="UTF-8">
     <title>Panel Admin - Tienda Ropa</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/tienda-ropa/css/style.css">
 </head>
 <body>
     <div class="admin-container">
@@ -39,7 +39,7 @@ $totalUsers = $conn->query("SELECT COUNT(*) as total FROM usuarios WHERE rol = '
         </div>
         
         <h2>Gestión de Usuarios</h2>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -70,10 +70,8 @@ $totalUsers = $conn->query("SELECT COUNT(*) as total FROM usuarios WHERE rol = '
             </tbody>
         </table>
         
-        <a href="/logout.php" class="logout">Cerrar Sesión</a>
-        <a href="/dashboard.php" class="back">Volver al inicio</a>
+        <a href="/tienda-ropa/logout.php" class="logout">Cerrar Sesión</a>
+        <a href="/tienda-ropa/dashboard.php" class="back">Volver al inicio</a>
     </div>
 </body>
 </html>
-
-
