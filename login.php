@@ -72,9 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ¿No tienes cuenta? <a href="/tienda-ropa/register.php">Regístrate</a>
         </p>
     </div>
-	<p style="text-align: center; margin-top: 1rem;">
-    	¿No tienes cuenta? <a href="/tienda-ropa/register.php">Regístrate</a>
-	</p>
 </body>
 </html>
 
