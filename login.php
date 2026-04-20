@@ -16,27 +16,31 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
-    $password = md5($_POST['password'] ?? '');
+    $password_plain = $_POST['password'] ?? '';
     
-    $stmt = $conn->prepare("SELECT id, nombre, email, rol FROM usuarios WHERE email = ? AND password = ?");
-    $stmt->bind_param("ss", $email, $password);
+    $stmt = $conn->prepare("SELECT id, nombre, email, rol, password FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $resultado = $stmt->get_result();
     
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
         
-        $_SESSION['usuario_id'] = $usuario['id'];
-        $_SESSION['usuario_nombre'] = $usuario['nombre'];
-        $_SESSION['usuario_email'] = $usuario['email'];
-        $_SESSION['usuario_rol'] = $usuario['rol'];
-        
-        if ($usuario['rol'] === 'admin') {
-            header('Location: /tienda-ropa/admin/panel.php');
+        if (password_verify($password_plain, $usuario['password'])) {
+            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_nombre'] = $usuario['nombre'];
+            $_SESSION['usuario_email'] = $usuario['email'];
+            $_SESSION['usuario_rol'] = $usuario['rol'];
+            
+            if ($usuario['rol'] === 'admin') {
+                header('Location: /tienda-ropa/admin/panel.php');
+            } else {
+                header('Location: /tienda-ropa/dashboard.php');
+            }
+            exit();
         } else {
-            header('Location: /tienda-ropa/dashboard.php');
+            $error = 'Email o contraseña incorrectos';
         }
-        exit();
     } else {
         $error = 'Email o contraseña incorrectos';
     }
@@ -63,6 +67,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" placeholder="Contraseña" required>
             <button type="submit">Ingresar</button>
         </form>
+        
+        <p style="text-align: center; margin-top: 1rem;">
+            ¿No tienes cuenta? <a href="/tienda-ropa/register.php">Regístrate</a>
+        </p>
     </div>
+	<p style="text-align: center; margin-top: 1rem;">
+    	¿No tienes cuenta? <a href="/tienda-ropa/register.php">Regístrate</a>
+	</p>
 </body>
 </html>
+
+
+
+

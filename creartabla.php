@@ -14,13 +14,14 @@ if ($conn->query($sql) === TRUE) {
     echo "Tabla 'usuarios' creada correctamente<br>";
     
     $adminEmail = "admin@tienda.com";
-    $adminPass = md5("admin123");
+    $adminPass = password_hash("admin123", PASSWORD_DEFAULT);
+    $userEmail = "user@tienda.com";
+    $userPass = password_hash("user123", PASSWORD_DEFAULT);
+    
     $conn->query("INSERT INTO usuarios (nombre, email, password, rol) 
                   SELECT 'Administrador', '$adminEmail', '$adminPass', 'admin'
                   WHERE NOT EXISTS (SELECT 1 FROM usuarios WHERE email = '$adminEmail')");
     
-    $userEmail = "user@tienda.com";
-    $userPass = md5("user123");
     $conn->query("INSERT INTO usuarios (nombre, email, password, rol) 
                   SELECT 'Usuario Normal', '$userEmail', '$userPass', 'user'
                   WHERE NOT EXISTS (SELECT 1 FROM usuarios WHERE email = '$userEmail')");
@@ -34,3 +35,4 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
+
