@@ -38,6 +38,12 @@ $totalUsers = $conn->query("SELECT COUNT(*) as total FROM usuarios WHERE rol = '
             </div>
         </div>
         
+
+	<p style="margin: 1rem 0;">
+    <a href="/tienda-ropa/admin/productos.php" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">📦 Gestionar Productos</a>
+</p>
+
+
         <h2>Gestión de Usuarios</h2>
         <table border="1">
             <thead>
