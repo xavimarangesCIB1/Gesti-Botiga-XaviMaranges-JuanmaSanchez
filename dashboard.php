@@ -23,7 +23,8 @@ if (esAdmin()) {
             <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['usuario_email']); ?></p>
             <p><strong>Rol:</strong> Usuario normal</p>
         </div>
-        
+
+	<p><a href="/tienda-ropa/carrito.php" class="btn">🛒 Ir a la tienda</a></p>        
         <ul>
             <li><a href="#">Ver catálogo de productos</a></li>
             <li><a href="#">Mi perfil</a></li>
