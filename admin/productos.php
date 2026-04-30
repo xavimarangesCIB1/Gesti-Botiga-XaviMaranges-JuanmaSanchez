@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['crear'])) {
         $error = 'Nombre y precio son obligatorios';
     } else {
         $stmt = $conn->prepare("INSERT INTO productos (nombre, descripcion, precio, stock, talla, color, categoria) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssdiss", $nombre, $descripcion, $precio, $stock, $talla, $color, $categoria);
+        $stmt->bind_param("ssdssss", $nombre, $descripcion, $precio, $stock, $talla, $color, $categoria);
         
         if ($stmt->execute()) {
             $mensaje = 'Producto creado correctamente';
