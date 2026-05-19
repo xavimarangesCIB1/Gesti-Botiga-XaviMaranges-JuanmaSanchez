@@ -27,6 +27,7 @@ if (esAdmin()) {
         <ul>
    	   <li><a href="/tienda-ropa/carrito.php">🛒 Ir a la tienda</a></li>
    	   <li><a href="/tienda-ropa/mis_pedidos.php">📋 Mis pedidos</a></li>
+   	   <li><a href="/tienda-ropa/cambiar_password.php">🔐 Cambiar contraseña</a></li>
 	</ul>
         
         <a href="/tienda-ropa/logout.php" class="logout">Cerrar Sesión</a>
