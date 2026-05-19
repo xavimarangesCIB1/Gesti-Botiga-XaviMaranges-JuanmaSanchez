@@ -126,7 +126,8 @@ $productos = $conn->query("SELECT * FROM productos ORDER BY id DESC")->fetch_all
                     <p><strong>Stock:</strong> <?php echo $producto['stock']; ?></p>
                     <p><strong>Talla:</strong> <?php echo $producto['talla'] ?: '-'; ?></p>
                     <p><strong>Color:</strong> <?php echo $producto['color'] ?: '-'; ?></p>
-                    <a href="?eliminar=<?php echo $producto['id']; ?>" class="boton-eliminar" onclick="return confirm('¿Eliminar este producto?')">Eliminar</a>
+                    <a href="editar_producto.php?id=<?php echo $producto['id']; ?>" style="color: #007bff; text-decoration: none; margin-right: 0.5rem;">Editar</a>
+		    <a href="?eliminar=<?php echo $producto['id']; ?>" class="boton-eliminar" onclick="return confirm('¿Eliminar este producto?')">Eliminar</a>
                 </div>
             <?php endforeach; ?>
         </div>
