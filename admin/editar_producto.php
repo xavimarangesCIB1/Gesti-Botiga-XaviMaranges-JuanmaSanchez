@@ -33,15 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
         $error = 'Nombre y precio son obligatorios';
     } else {
         $stmt = $conn->prepare("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ?, talla = ?, color = ?, categoria = ?, activo = ? WHERE id = ?");
-        $stmt->bind_param("ssdiss", $nombre, $descripcion, $precio, $stock, $talla, $color, $categoria, $activo, $id);
+        $stmt->bind_param("ssdssssii", $nombre, $descripcion, $precio, $stock, $talla, $color, $categoria, $activo, $id);
         
         if ($stmt->execute()) {
-            $mensaje = 'Producto actualizado correctamente';
-            // Recargar datos
-            $stmt = $conn->prepare("SELECT * FROM productos WHERE id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $producto = $stmt->get_result()->fetch_assoc();
+   	    header('Location: /tienda-ropa/admin/productos.php?mensaje=Producto actualizado correctamente');
+    	    exit();
         } else {
             $error = 'Error al actualizar el producto';
         }
